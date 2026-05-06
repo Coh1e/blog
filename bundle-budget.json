@@ -1,0 +1,11 @@
+{
+  "$comment": "Per-chunk size budgets in KB (raw, uncompressed). Match by prefix; first hit wins. Update intentionally when a real growth is justified.",
+  "chunks": [
+    { "prefix": "app-",          "maxKB": 350,  "note": "main app shell — touches every route" },
+    { "prefix": "react-",        "maxKB": 240,  "note": "react + react-dom + react-router-dom" },
+    { "prefix": "markdown-",     "maxKB": 400,  "note": "react-markdown + remark/rehype, article pages only" },
+    { "prefix": "katex-",        "maxKB": 300,  "note": "math rendering, lazy on article pages" },
+    { "prefix": "mermaid.core-", "maxKB": 700,  "note": "mermaid base, lazy on article pages with diagrams" }
+  ],
+  "totalMaxKB": 5000
+}

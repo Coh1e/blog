@@ -1,0 +1,28 @@
+.block {
+  margin: 1.6rem 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.block svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.placeholder {
+  font-family: var(--header-font);
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-style: italic;
+}
+
+.error {
+  background: var(--code-bg);
+  border-left: 3px solid var(--link-hover);
+  padding: 1rem;
+  font-family: var(--code-font);
+  font-size: 0.85rem;
+  color: var(--darkgray);
+  white-space: pre-wrap;
+  margin: 1.6rem 0;
+}

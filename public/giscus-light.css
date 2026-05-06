@@ -1,0 +1,146 @@
+/*!
+ * Custom giscus theme — light. Mirrors the site's flat single-layer look:
+ *  - canvas:  #fafafa (matches --bg in tokens.css)
+ *  - text:    #0f0f0f (--dark)
+ *  - link:    #0645ad (--link)
+ *  - border:  #e5e5e5 (--lightgray)
+ *  - body:    Source Serif 4 + LXGW WenKai Screen (--body-font)
+ *  - mono:    JetBrains Mono (--code-font)
+ *
+ * Overrides GitHub Primer variables that giscus reads. The class & data
+ * selectors here mirror the structure giscus injects into its iframe; if a
+ * giscus upgrade renames internal classes, recheck against
+ * https://github.com/giscus/giscus/blob/main/styles/themes/light.css
+ */
+
+main {
+  /* canvas / surface */
+  --color-canvas-default: #fafafa;
+  --color-canvas-overlay: #fafafa;
+  --color-canvas-inset: #f1f1f1;
+  --color-canvas-subtle: #f1f1f1;
+
+  /* text */
+  --color-fg-default: #0f0f0f;
+  --color-fg-muted: #4a4a4a;
+  --color-fg-subtle: #b8b8b8;
+  --color-fg-on-emphasis: #fafafa;
+
+  /* borders — single 1px hairline like the rest of the site */
+  --color-border-default: #e5e5e5;
+  --color-border-muted: #e5e5e5;
+
+  /* accent / links */
+  --color-accent-fg: #0645ad;
+  --color-accent-emphasis: #0645ad;
+  --color-accent-muted: rgba(6, 69, 173, 0.18);
+  --color-accent-subtle: rgba(6, 69, 173, 0.08);
+
+  /* primer button (Sign in / Comment) */
+  --color-btn-text: #0f0f0f;
+  --color-btn-bg: #fafafa;
+  --color-btn-border: #e5e5e5;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #f1f1f1;
+  --color-btn-hover-border: #b8b8b8;
+  --color-btn-active-bg: #f1f1f1;
+  --color-btn-active-border: #b8b8b8;
+  --color-btn-selected-bg: #f1f1f1;
+
+  /* primary button (publish) */
+  --color-btn-primary-text: #fafafa;
+  --color-btn-primary-bg: #0645ad;
+  --color-btn-primary-border: #0645ad;
+  --color-btn-primary-hover-bg: #0a3a8f;
+  --color-btn-primary-hover-border: #0a3a8f;
+  --color-btn-primary-disabled-text: #b8b8b8;
+  --color-btn-primary-disabled-bg: #f1f1f1;
+  --color-btn-primary-disabled-border: #e5e5e5;
+
+  /* counter pill (reaction counts) */
+  --color-counter-border: transparent;
+
+  /* code blocks inside comments */
+  --color-prettylights-syntax-comment: #6a737d;
+  --color-prettylights-syntax-constant: #005cc5;
+  --color-prettylights-syntax-entity: #6f42c1;
+  --color-prettylights-syntax-storage-modifier-import: #0f0f0f;
+  --color-prettylights-syntax-entity-tag: #22863a;
+  --color-prettylights-syntax-keyword: #d73a49;
+  --color-prettylights-syntax-string: #032f62;
+  --color-prettylights-syntax-variable: #e36209;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #b31d28;
+  --color-prettylights-syntax-invalid-illegal-text: #fafbfc;
+  --color-prettylights-syntax-invalid-illegal-bg: #b31d28;
+  --color-prettylights-syntax-carriage-return-text: #fafbfc;
+  --color-prettylights-syntax-carriage-return-bg: #d73a49;
+  --color-prettylights-syntax-string-regexp: #22863a;
+  --color-prettylights-syntax-markup-list: #735c0f;
+  --color-prettylights-syntax-markup-heading: #005cc5;
+  --color-prettylights-syntax-markup-italic: #0f0f0f;
+  --color-prettylights-syntax-markup-bold: #0f0f0f;
+  --color-prettylights-syntax-markup-deleted-text: #b31d28;
+  --color-prettylights-syntax-markup-deleted-bg: #ffeef0;
+  --color-prettylights-syntax-markup-inserted-text: #22863a;
+  --color-prettylights-syntax-markup-inserted-bg: #f0fff4;
+  --color-prettylights-syntax-markup-changed-text: #e36209;
+  --color-prettylights-syntax-markup-changed-bg: #ffebda;
+  --color-prettylights-syntax-markup-ignored-text: #f6f8fa;
+  --color-prettylights-syntax-markup-ignored-bg: #005cc5;
+  --color-prettylights-syntax-meta-diff-range: #6f42c1;
+  --color-prettylights-syntax-brackethighlighter-angle: #4a4a4a;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #b8b8b8;
+  --color-prettylights-syntax-constant-other-reference-link: #032f62;
+
+  /* misc */
+  --color-danger-fg: #b31d28;
+  --color-success-fg: #22863a;
+  --color-attention-fg: #735c0f;
+  --color-attention-subtle: rgba(115, 92, 15, 0.08);
+  --color-severe-fg: #b31d28;
+  --color-neutral-muted: rgba(184, 184, 184, 0.4);
+  --color-neutral-subtle: rgba(184, 184, 184, 0.1);
+  --color-neutral-emphasis: #4a4a4a;
+  --color-neutral-emphasis-plus: #0f0f0f;
+  --color-primer-fg-disabled: #b8b8b8;
+  --color-primer-canvas-backdrop: rgba(15, 15, 15, 0.4);
+  --color-primer-shadow-highlight: 0 0 transparent;
+  --color-primer-shadow-inset: 0 0 transparent;
+
+  /* font stacks — mirror tokens.css */
+  --primer-fontStack-sansSerif: "Inter", "Noto Sans SC", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --primer-fontStack-monospace: "JetBrains Mono", "LXGW WenKai Mono", monospace;
+}
+
+/* The comment body text uses serif to feel like part of an article. The UI
+ * chrome (buttons, counts, "N reactions") stays sans for legibility. */
+.markdown-body,
+.markdown-body p,
+.markdown-body li,
+.markdown-body blockquote {
+  font-family: "Source Serif 4", "Newsreader", "LXGW WenKai Screen", "LXGW WenKai",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif !important;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: "JetBrains Mono", "LXGW WenKai Mono", monospace !important;
+  font-size: 0.8125rem;
+}
+
+/* Strip the rounded card frame — site has its own --lightgray top divider */
+.gsc-comments,
+.gsc-main {
+  border: none;
+  background: transparent;
+}
+
+/* Reaction button row: keep flat, no shadow */
+.gsc-reactions-popover,
+.gsc-reactions-menu {
+  border-radius: 0;
+}

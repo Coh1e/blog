@@ -1,0 +1,30 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--header-font);
+  font-size: 11px;
+  padding: 1px 6px;
+  border: 1px solid var(--lightgray);
+  border-radius: 2px;
+  color: var(--gray);
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.glyph {
+  font-family: var(--header-font);
+}
+
+/* Reader mode: drop the pill chrome — status reads as plain inline text
+ * with a leading separator per Figma 209:418-422. */
+:global(html.reader-mode) .pill {
+  border: none;
+  padding: 0;
+  font-size: 1.0625rem;          /* match the row title size */
+  font-family: var(--body-font);
+}
+:global(html.reader-mode) .pill::before {
+  content: "·  ";
+  color: var(--gray);
+}

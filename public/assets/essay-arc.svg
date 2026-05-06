@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 220" role="img" aria-label="Diagram of an essay's structural arc">
+  <style>
+    .axis { stroke: #b8b8b8; stroke-width: 1; }
+    .arc { stroke: #0f0f0f; stroke-width: 1.5; fill: none; }
+    .pt { fill: #0f0f0f; }
+    .lbl { font: 12px Inter, system-ui, sans-serif; fill: #4a4a4a; }
+    .cap { font: 11px Inter, system-ui, sans-serif; fill: #b8b8b8; }
+  </style>
+  <!-- baseline -->
+  <line class="axis" x1="40" y1="170" x2="680" y2="170"/>
+  <!-- arc curve: opening → tension → climax → resolution -->
+  <path class="arc" d="M 60 170 Q 180 170 220 130 T 360 60 T 520 110 T 680 150"/>
+  <!-- nodes -->
+  <circle class="pt" cx="60"  cy="170" r="3"/>
+  <circle class="pt" cx="220" cy="130" r="3"/>
+  <circle class="pt" cx="360" cy="60"  r="4"/>
+  <circle class="pt" cx="520" cy="110" r="3"/>
+  <circle class="pt" cx="680" cy="150" r="3"/>
+  <!-- labels -->
+  <text class="lbl" x="60"  y="195" text-anchor="middle">premise</text>
+  <text class="lbl" x="220" y="195" text-anchor="middle">setup</text>
+  <text class="lbl" x="360" y="195" text-anchor="middle">turn</text>
+  <text class="lbl" x="520" y="195" text-anchor="middle">resolution</text>
+  <text class="lbl" x="680" y="195" text-anchor="middle">close</text>
+  <!-- caption above climax -->
+  <text class="cap" x="360" y="45"  text-anchor="middle">the surprise</text>
+</svg>

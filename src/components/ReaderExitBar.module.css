@@ -1,0 +1,63 @@
+/* Hidden by default. Becomes visible only when <html class="reader-mode">. */
+.exitBar { display: none; }
+
+:global(html.reader-mode) .exitBar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;     /* Keeps wordmark optically centered. */
+  align-items: center;
+  padding: 24px 40px 0 40px;       /* Figma reader top bar: pt-24 px-40 */
+}
+
+.exitBar > * { justify-self: center; }
+.exitLink { justify-self: start; }
+
+@media (max-width: 720px) {
+  :global(html.reader-mode) .exitBar {
+    padding: 16px 20px 0 20px;
+  }
+}
+
+.exitLink {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--link);
+  line-height: 1.45;
+}
+
+.exitLink:hover { color: var(--link-hover); }
+
+/* Centered muted wordmark (per Figma reader exit bar). */
+.wordmark {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  color: var(--gray);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.zh {
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: 1.1875rem;            /* 19px CN per Figma wordmark */
+}
+
+.en {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 1.125rem;             /* 18px EN */
+}
+
+.sep {
+  margin: 0 0.35em;
+  color: var(--gray);
+  font-weight: 400;
+}
+
+/* Right-side invisible spacer reserved for symmetry; grid handles centering. */
+.spacer { width: 1px; }

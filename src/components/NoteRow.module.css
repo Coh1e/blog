@@ -1,0 +1,46 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0 0 8px 0;
+  list-style: none;
+}
+
+.title {
+  color: var(--link);
+  text-decoration: none;
+  font-family: var(--body-font);
+  font-size: var(--row-title-size);
+  line-height: 1.45;
+}
+
+.title:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.summary {
+  color: var(--gray);
+  font-size: var(--row-meta-size);
+  font-family: var(--header-font);
+}
+
+.summary::before {
+  content: "·  ";
+  color: var(--gray);
+}
+
+/* Reader mode: simplify to "→ title · status" per Figma 209:418-422. */
+:global(html.reader-mode) .row {
+  gap: 8px;
+  padding: 8px 0;
+  margin: 0;
+}
+:global(html.reader-mode) .summary { display: none; }
+:global(html.reader-mode) .title {
+  font-size: 1.0625rem;          /* 17px */
+  line-height: 1.8;
+}
+:global(html.reader-mode) .title::before { content: "→ "; }

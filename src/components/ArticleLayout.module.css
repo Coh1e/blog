@@ -1,0 +1,240 @@
+.row {
+  padding: 32px 80px 80px 80px;
+  display: grid;
+  grid-template-columns: var(--article-indent) var(--article-width) 1fr var(--right-rail-width);
+  column-gap: 0;
+}
+
+/* Pages without a right rail (About, Now): drop the 4th column. */
+.rowNoRail {
+  grid-template-columns: var(--article-indent) var(--article-width) 1fr;
+}
+
+/* Tablet: drop the left indent, narrower padding, smaller rail */
+@media (max-width: 1100px) {
+  .row {
+    padding: 24px 48px 48px 48px;
+    grid-template-columns: 1fr 160px;
+    column-gap: 32px;
+  }
+  .article {
+    grid-column: 1 / 2 !important;
+    max-width: var(--article-width);
+  }
+  .rail {
+    grid-column: 2 / 3 !important;
+  }
+}
+
+/* Phone: stack — rail goes BELOW article, no fixed widths */
+@media (max-width: 720px) {
+  .row {
+    padding: 16px 20px 40px 20px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .article {
+    grid-column: 1 / 2 !important;
+  }
+  .rail {
+    grid-column: 1 / 2 !important;
+    border-top: 1px solid var(--lightgray);
+    padding-top: 1.5rem;
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+  .title {
+    font-size: 1.5rem !important;
+  }
+}
+
+.article {
+  grid-column: 2 / 3;
+  min-width: 0;
+}
+
+.rail {
+  grid-column: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 32px;
+  align-self: start;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.breadcrumb {
+  font-family: var(--header-font);
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin: 0 0 0.4rem 0;
+}
+
+.title {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 1.85rem;              /* 28px-ish per Figma */
+  line-height: 1.25;
+  color: var(--dark);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.015em;
+}
+
+/* Reader mode bumps the article title 28 → 30 per Figma reader spec. */
+:global(html.reader-mode) .title { font-size: 1.875rem; }
+
+:global([lang="zh-CN"]) .title {
+  font-family: var(--body-font);
+  font-weight: 700;
+}
+
+.meta {
+  font-family: var(--header-font);
+  font-size: 0.8125rem;            /* 13px per Figma article meta */
+  color: var(--gray);
+  margin: 0 0 0.625rem 0;          /* 10px gap to tags per Figma */
+}
+
+.audioEntry {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: var(--link);
+}
+
+.audioEntry:hover { color: var(--link-hover); }
+
+.tended {
+  color: var(--gray);
+}
+
+.statusGlyph {
+  color: var(--dark);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;                        /* Figma article tag list gap */
+  margin: 0 0 1.75rem 0;           /* 28px gap to body per Figma */
+}
+
+.body :global(p) {
+  font-size: var(--article-body-size);
+  line-height: var(--body-line);
+  color: var(--darkgray);
+  margin: 0 0 1.4em 0;
+}
+
+.body :global(h2) {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 1.3125rem;            /* 21px per Figma */
+  line-height: 1.3;
+  margin: 1.75rem 0 0.75rem 0;     /* 28px above (section gap), 12px below per Figma */
+  color: var(--dark);
+}
+
+:global([lang="zh-CN"]) .body :global(h2) {
+  font-family: var(--body-font);
+  font-weight: 700;
+}
+
+.body :global(h3) {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: var(--h3-size);       /* 18px per Figma */
+  line-height: 1.3;
+  margin: 1.6rem 0 0.75rem 0;
+  color: var(--dark);
+}
+
+.body :global(blockquote) {
+  border-left: 2px solid var(--lightgray);
+  padding-left: 1rem;
+  margin: 0 0 1.2em 0;
+  color: var(--gray);              /* Figma uses muted, no italic — LXGW has no italic cut */
+}
+
+.body :global(code) {
+  font-family: var(--code-font);
+  font-size: var(--inline-code-size);  /* 14px per Figma markdown sample */
+  background: var(--code-bg);
+  padding: 0.05em 0.3em;
+  border-radius: 2px;
+}
+
+.body :global(pre) {
+  font-family: var(--code-font);
+  font-size: var(--code-block-size);   /* 13px per Figma */
+  background: transparent;             /* Figma: outline card, no fill */
+  border: 1px solid var(--lightgray);
+  padding: 14px 16px;
+  border-radius: 2px;
+  overflow-x: auto;
+  line-height: 1.55;
+  margin: 0 0 1.2em 0;
+}
+
+.body :global(pre code) {
+  background: transparent;
+  padding: 0;
+}
+
+.body :global(ul),
+.body :global(ol) {
+  margin: 0 0 1.2em 0;
+  padding-left: 1.6em;
+  font-size: var(--article-body-size);
+  line-height: var(--body-line);
+  color: var(--darkgray);
+}
+
+.body :global(a) {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.body :global(a:hover) {
+  color: var(--link-hover);
+}
+
+.body :global(hr) {
+  border: none;
+  border-top: 1px solid var(--lightgray);
+  margin: 2rem 0;
+}
+
+.body :global(img) {
+  max-width: 100%;
+  height: auto;
+  margin: 1.2em 0;
+}
+
+.body :global(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.2em 0;
+  font-size: 0.95rem;
+}
+
+.body :global(th),
+.body :global(td) {
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.body :global(th) {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--gray);
+}

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" role="img" aria-label="Timeline of writing tools tried and abandoned over a decade">
+  <style>
+    .axis  { stroke: #b8b8b8; stroke-width: 1; }
+    .tick  { stroke: #b8b8b8; stroke-width: 1; }
+    .yr    { font: 11px Inter, system-ui, sans-serif; fill: #b8b8b8; }
+    .bar   { stroke-width: 6; fill: none; stroke-linecap: square; }
+    .live  { stroke: #0f0f0f; }
+    .dead  { stroke: #d8d8d8; }
+    .lbl   { font: 12px Inter, system-ui, sans-serif; fill: #4a4a4a; }
+    .note  { font: 10px Inter, system-ui, sans-serif; fill: #b8b8b8; }
+  </style>
+
+  <!-- horizontal axis 2015 → 2026 -->
+  <line class="axis" x1="60" y1="240" x2="700" y2="240"/>
+  <g class="yr">
+    <line class="tick" x1="60"  y1="240" x2="60"  y2="245"/><text x="60"  y="260" text-anchor="middle">2015</text>
+    <line class="tick" x1="118" y1="240" x2="118" y2="245"/>
+    <line class="tick" x1="176" y1="240" x2="176" y2="245"/><text x="176" y="260" text-anchor="middle">2017</text>
+    <line class="tick" x1="234" y1="240" x2="234" y2="245"/>
+    <line class="tick" x1="292" y1="240" x2="292" y2="245"/><text x="292" y="260" text-anchor="middle">2019</text>
+    <line class="tick" x1="350" y1="240" x2="350" y2="245"/>
+    <line class="tick" x1="408" y1="240" x2="408" y2="245"/><text x="408" y="260" text-anchor="middle">2021</text>
+    <line class="tick" x1="466" y1="240" x2="466" y2="245"/>
+    <line class="tick" x1="524" y1="240" x2="524" y2="245"/><text x="524" y="260" text-anchor="middle">2023</text>
+    <line class="tick" x1="582" y1="240" x2="582" y2="245"/>
+    <line class="tick" x1="640" y1="240" x2="640" y2="245"/><text x="640" y="260" text-anchor="middle">2025</text>
+    <line class="tick" x1="700" y1="240" x2="700" y2="245"/>
+  </g>
+
+  <!-- bars -->
+  <!-- nvALT -->
+  <line class="bar dead" x1="60"  y1="40" x2="234" y2="40"/>
+  <text class="lbl" x="60" y="34">nvALT</text>
+  <text class="note" x="234" y="34">→ stopped syncing well</text>
+
+  <!-- Bear -->
+  <line class="bar dead" x1="234" y1="70" x2="350" y2="70"/>
+  <text class="lbl" x="234" y="64">Bear</text>
+  <text class="note" x="350" y="64">→ left iCloud lock-in</text>
+
+  <!-- Notion -->
+  <line class="bar dead" x1="350" y1="100" x2="466" y2="100"/>
+  <text class="lbl" x="350" y="94">Notion</text>
+  <text class="note" x="466" y="94">→ couldn't grep</text>
+
+  <!-- Roam -->
+  <line class="bar dead" x1="408" y1="130" x2="524" y2="130"/>
+  <text class="lbl" x="408" y="124">Roam</text>
+  <text class="note" x="524" y="124">→ subscription died</text>
+
+  <!-- Obsidian + plain markdown (still alive) -->
+  <line class="bar live" x1="466" y1="160" x2="700" y2="160"/>
+  <text class="lbl" x="466" y="154">Obsidian on plain markdown</text>
+
+  <!-- Quartz / static site -->
+  <line class="bar live" x1="582" y1="190" x2="700" y2="190"/>
+  <text class="lbl" x="582" y="184">Quartz (this site)</text>
+</svg>

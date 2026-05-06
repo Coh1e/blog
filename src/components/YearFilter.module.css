@@ -1,0 +1,101 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--header-font);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.45;
+}
+
+.trigger:hover {
+  color: var(--dark);
+}
+
+.triggerActive {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 50;
+  background: var(--bg);
+  border: 1px solid var(--lightgray);
+  border-radius: 2px;
+  padding: 6px 0;
+  min-width: 200px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-family: var(--header-font);
+  font-size: 13px;
+  color: var(--darkgray);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+.row:hover {
+  background: var(--lightgray);
+}
+
+.rowActive {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.resetRow {
+  border-bottom: 1px solid var(--lightgray);
+  padding-bottom: 8px;
+  margin-bottom: 2px;
+}
+
+.rowLabel {
+  flex-shrink: 0;
+  width: 3em;
+}
+
+.rowCount {
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.rowActive .rowCount {
+  color: var(--dark);
+}
+
+.sparkline {
+  flex-shrink: 0;
+  display: block;
+}
+
+.bar {
+  fill: var(--gray);
+}
+
+.row:hover .bar,
+.rowActive .bar {
+  fill: var(--dark);
+}

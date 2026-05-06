@@ -1,0 +1,134 @@
+.avatar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.imageLink {
+  display: block;
+  line-height: 0;
+  position: relative;             /* anchor for the bio popover */
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  background: var(--lightgray);
+}
+
+.hero {
+  margin-top: 8px;          /* Combined with sidebar's gap-16 → 24px before Avatar per Figma */
+}
+
+.hero .image {
+  max-width: 240px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.compact .image {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.tagline {
+  margin: 8px 0 0;
+  font-size: var(--row-meta-size);
+  font-family: var(--body-font);
+  color: var(--darkgray);
+  line-height: 1.6;
+}
+
+.aboutLink {
+  font-size: 12px;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.aboutLink:hover {
+  color: var(--link-hover);
+}
+
+/* ── Bio popover (per Figma 168:160 — Avatar Hover State demo) ── */
+.popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 260px;
+  background: var(--bg);
+  border: 1px solid var(--lightgray);
+  border-radius: 4px;
+  padding: 16px 18px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 30;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  cursor: default;
+}
+
+.imageLink:hover .popover,
+.imageLink:focus-visible .popover {
+  display: flex;
+}
+
+.popoverWordmark {
+  margin: 0;
+  display: inline-flex;
+  align-items: baseline;
+  color: var(--dark);
+  line-height: 1.3;
+}
+
+.popoverZh {
+  font-family: var(--body-font);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.popoverEn {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.popoverSep {
+  color: var(--gray);
+  margin: 0 0.35em;
+  font-weight: 400;
+}
+
+.popoverTags {
+  margin: 0;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.45;
+}
+
+.popoverBioCn {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 13px;
+  color: var(--darkgray);
+  line-height: 1.6;
+}
+
+.popoverBioEn {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 14px;
+  color: var(--darkgray);
+  line-height: 1.5;
+}
+
+.popoverLink {
+  margin: 0;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--link);
+  line-height: 1.45;
+}

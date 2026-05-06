@@ -1,0 +1,114 @@
+.page {
+  padding: 80px;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr 120px;
+  column-gap: 80px;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.utilities {
+  display: flex;
+  gap: 8px;
+}
+
+.main {
+  max-width: var(--article-width);
+  min-width: 0;
+}
+
+.rightRail {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 120px;
+}
+
+.railSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.railSection + .railSection {
+  border-top: 1px solid var(--lightgray);
+  padding-top: 16px;
+}
+
+.railHeading {
+  font-family: var(--header-font);
+  font-size: var(--label-size);
+  font-weight: 600;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 0 0 12px 0;
+}
+
+.railList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.railList li {
+  margin: 0;
+  line-height: 1.7;             /* Figma: leading-1.7 between Elsewhere links */
+}
+
+.railLink {
+  font-family: var(--header-font);
+  font-size: 14px;
+  color: var(--link);
+  text-decoration: none;
+}
+
+.railLink:hover {
+  color: var(--link-hover);
+}
+
+.railNote {
+  margin: 4px 0 0 0;
+  font-family: var(--body-font);
+  font-size: 12px;
+  color: var(--gray);
+  line-height: 1.45;
+}
+
+@media (max-width: 1100px) {
+  .page {
+    padding: 48px 40px;
+    column-gap: 48px;
+    grid-template-columns: 200px 1fr;       /* drop right rail on tablet */
+  }
+  .rightRail { display: none; }
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 32px 20px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sidebar > section {
+    display: none;
+  }
+
+  .main {
+    max-width: 100%;
+  }
+}

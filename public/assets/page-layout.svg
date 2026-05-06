@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" role="img" aria-label="Diagram of the article-page typography layout">
+  <style>
+    .frame  { fill: none; stroke: #b8b8b8; stroke-width: 1; }
+    .col    { fill: #f3f3f3; stroke: #b8b8b8; stroke-width: 1; }
+    .rail   { fill: #f8f8f8; stroke: #b8b8b8; stroke-width: 1; stroke-dasharray: 3 3; }
+    .text   { stroke: #b8b8b8; stroke-width: 1; }
+    .head   { stroke: #4a4a4a; stroke-width: 2; }
+    .lbl    { font: 11px Inter, system-ui, sans-serif; fill: #4a4a4a; }
+    .dim    { font: 10px Inter, system-ui, sans-serif; fill: #b8b8b8; }
+    .arr    { stroke: #4a4a4a; stroke-width: 1; fill: #4a4a4a; }
+  </style>
+
+  <!-- viewport frame -->
+  <rect class="frame" x="20" y="20" width="680" height="320"/>
+  <text class="dim" x="20" y="14">viewport · 1320</text>
+
+  <!-- left margin (empty) -->
+  <text class="dim" x="120" y="180" text-anchor="middle">whitespace</text>
+
+  <!-- article column -->
+  <rect class="col" x="200" y="40" width="320" height="290"/>
+  <text class="lbl" x="360" y="34" text-anchor="middle">article column · 720</text>
+  <line class="head" x1="220" y1="60"  x2="500" y2="60"/>
+  <line class="text" x1="220" y1="80"  x2="500" y2="80"/>
+  <line class="text" x1="220" y1="100" x2="490" y2="100"/>
+  <line class="text" x1="220" y1="120" x2="500" y2="120"/>
+  <line class="text" x1="220" y1="140" x2="430" y2="140"/>
+  <line class="head" x1="220" y1="170" x2="380" y2="170"/>
+  <line class="text" x1="220" y1="190" x2="500" y2="190"/>
+  <line class="text" x1="220" y1="210" x2="500" y2="210"/>
+  <line class="text" x1="220" y1="230" x2="470" y2="230"/>
+  <line class="text" x1="220" y1="250" x2="500" y2="250"/>
+
+  <!-- right rail -->
+  <rect class="rail" x="540" y="40" width="120" height="180"/>
+  <text class="lbl" x="600" y="34" text-anchor="middle">TOC + backlinks · 180</text>
+  <line class="text" x1="555" y1="60" x2="630" y2="60" stroke="#d8d8d8"/>
+  <line class="text" x1="555" y1="78" x2="640" y2="78" stroke="#d8d8d8"/>
+  <line class="text" x1="555" y1="96" x2="610" y2="96" stroke="#d8d8d8"/>
+  <line class="text" x1="555" y1="114" x2="635" y2="114" stroke="#d8d8d8"/>
+
+  <!-- gap arrow -->
+  <line class="arr" x1="520" y1="40" x2="540" y2="40" marker-end="url(#a)" marker-start="url(#a)"/>
+  <text class="dim" x="530" y="34" text-anchor="middle">60</text>
+
+  <!-- Right margin label -->
+  <text class="dim" x="680" y="180" text-anchor="middle">110</text>
+  <text class="dim" x="100" y="200" text-anchor="middle">110</text>
+</svg>

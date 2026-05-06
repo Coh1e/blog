@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" role="img" aria-label="A small graph of interconnected notes">
+  <style>
+    .edge { stroke: #d8d8d8; stroke-width: 1; }
+    .node { fill: #4a4a4a; }
+    .hub  { fill: #0f0f0f; }
+    .lbl  { font: 11px Inter, system-ui, sans-serif; fill: #4a4a4a; }
+  </style>
+  <!-- edges first -->
+  <line class="edge" x1="300" y1="180" x2="120" y2="80"/>
+  <line class="edge" x1="300" y1="180" x2="180" y2="280"/>
+  <line class="edge" x1="300" y1="180" x2="450" y2="100"/>
+  <line class="edge" x1="300" y1="180" x2="500" y2="240"/>
+  <line class="edge" x1="300" y1="180" x2="380" y2="300"/>
+  <line class="edge" x1="300" y1="180" x2="220" y2="180"/>
+  <line class="edge" x1="120" y1="80"  x2="180" y2="280"/>
+  <line class="edge" x1="220" y1="180" x2="180" y2="280"/>
+  <line class="edge" x1="450" y1="100" x2="500" y2="240"/>
+  <line class="edge" x1="380" y1="300" x2="500" y2="240"/>
+  <line class="edge" x1="120" y1="80"  x2="220" y2="180"/>
+
+  <!-- hub -->
+  <circle class="hub" cx="300" cy="180" r="9"/>
+  <!-- satellites -->
+  <circle class="node" cx="120" cy="80"  r="5"/>
+  <circle class="node" cx="220" cy="180" r="5"/>
+  <circle class="node" cx="180" cy="280" r="5"/>
+  <circle class="node" cx="450" cy="100" r="5"/>
+  <circle class="node" cx="500" cy="240" r="5"/>
+  <circle class="node" cx="380" cy="300" r="4"/>
+
+  <!-- labels -->
+  <text class="lbl" x="300" y="160" text-anchor="middle">digital-garden</text>
+  <text class="lbl" x="120" y="65"  text-anchor="middle">backlinks</text>
+  <text class="lbl" x="450" y="85"  text-anchor="middle">note-taking-is-not-knowledge</text>
+  <text class="lbl" x="500" y="260" text-anchor="middle">on-finishing</text>
+  <text class="lbl" x="180" y="300" text-anchor="middle">plain-text-everything</text>
+  <text class="lbl" x="380" y="320" text-anchor="middle">margin-notes</text>
+  <text class="lbl" x="220" y="200" text-anchor="middle">reading-in-seasons</text>
+</svg>

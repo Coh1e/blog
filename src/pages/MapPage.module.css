@@ -1,0 +1,349 @@
+.row {
+  padding: 32px 80px 80px 80px;
+  display: grid;
+  grid-template-columns: var(--article-indent) var(--article-width) 1fr var(--right-rail-width);
+  column-gap: 0;
+}
+
+@media (max-width: 1100px) {
+  .row {
+    padding: 24px 48px 48px 48px;
+    grid-template-columns: 1fr var(--right-rail-width);
+    column-gap: 32px;
+  }
+  .main { grid-column: 1 / 2 !important; max-width: var(--article-width); }
+  .rail { grid-column: 2 / 3 !important; }
+}
+
+@media (max-width: 720px) {
+  .row {
+    padding: 16px 20px 40px 20px;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .main, .rail { grid-column: 1 / 2 !important; }
+  .rail {
+    border-top: 1px solid var(--lightgray);
+    padding-top: 1.5rem;
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+.main {
+  grid-column: 2 / 3;
+  min-width: 0;
+}
+
+.rail {
+  grid-column: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: sticky;
+  top: 32px;
+  align-self: start;
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+.header {
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-family: var(--header-font);
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin: 0 0 0.4rem 0;
+}
+
+.title {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 1.85rem;
+  line-height: 1.25;
+  color: var(--dark);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.015em;
+}
+
+:global([lang="zh-CN"]) .title {
+  font-family: var(--body-font);
+  font-weight: 700;
+}
+
+.subtitle {
+  font-family: var(--header-font);
+  font-size: 0.85rem;
+  color: var(--gray);
+  margin: 0;
+}
+
+/* ── Filter strip (maturity) ── */
+.filterStrip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 28px 0;
+  padding: 4px 0 8px 0;
+}
+
+.filterRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filterSep {
+  color: var(--lightgray);
+  font-family: var(--header-font);
+  font-size: 13px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--header-font);
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.45;
+}
+
+.pill:hover .pillLabel,
+.pill:hover .pillCount,
+.pill:hover .pillGlyph {
+  color: var(--dark);
+}
+
+.pillActive .pillLabel,
+.pillActive .pillCount,
+.pillActive .pillGlyph {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.pillGlyph {
+  font-family: var(--header-font);
+}
+
+.pillLabel { }
+
+.pillCount {
+  color: var(--gray);
+}
+
+.pillActive .pillCount {
+  color: var(--dark);
+}
+
+/* ── Entry list ── */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Empty state ── */
+.empty {
+  border: 1px dashed var(--lightgray);
+  border-radius: 4px;
+  padding: 80px 20px;
+  text-align: center;
+  color: var(--gray);
+}
+
+.empty p {
+  margin: 0 0 12px 0;
+  font-family: var(--header-font);
+  font-size: 1.1rem;
+  color: var(--dark);
+}
+
+.clearLink {
+  background: none;
+  border: none;
+  color: var(--link);
+  font-size: 13px;
+  font-family: var(--header-font);
+  cursor: pointer;
+  padding: 0;
+}
+
+.clearLink:hover { color: var(--link-hover); }
+
+/* ── Tag rail ── */
+.railHeading {
+  font-family: var(--header-font);
+  font-size: var(--label-size);
+  font-weight: 600;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 0 0 0.5rem 0;
+}
+
+/* CN doesn't take uppercase, and label-tracking pulls Han glyphs apart
+   visually — drop both so 标签/已选 read naturally per Figma 169:171. */
+:global([lang="zh-CN"]) .railHeading {
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--dark);
+}
+
+.tagWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-content: flex-start;
+}
+
+.tagItem {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-family: var(--header-font);
+  font-size: 12px;
+  text-decoration: none;
+  color: var(--gray);
+  line-height: 1.45;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.tagItem:hover .tagName {
+  color: var(--dark);
+}
+
+.tagItemActive .tagName {
+  color: var(--dark);
+  font-weight: 600;
+}
+
+.tagItemActive .tagCount {
+  color: var(--dark);
+}
+
+.tagName { }
+
+.tagCount {
+  font-size: 12px;
+  color: var(--gray);
+}
+
+/* ── Selected block (top of tag rail) ── */
+.railSelected {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--lightgray);
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 6px;
+  border: 1px solid var(--lightgray);
+  border-radius: 2px;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--dark);
+  line-height: 1.4;
+}
+
+.chipLabel { }
+
+.chipClose {
+  background: none;
+  border: none;
+  padding: 0 0 0 2px;
+  cursor: pointer;
+  color: var(--gray);
+  font-size: 13px;
+  line-height: 1;
+  font-family: inherit;
+}
+
+.chipClose:hover {
+  color: var(--link-hover);
+}
+
+/* ── Tag search input (rail) ── */
+.tagSearchWrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--lightgray);
+  border-radius: 2px;
+  padding: 6px 8px;
+  margin-bottom: 8px;
+}
+
+.tagSearchWrap:focus-within {
+  border-color: var(--gray);
+}
+
+.tagSearchIcon {
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--gray);
+  flex-shrink: 0;
+}
+
+.tagSearchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--dark);
+  padding: 0;
+  min-width: 0;
+}
+
+.tagSearchInput::placeholder {
+  color: var(--gray);
+}
+
+.noTagMatch {
+  margin: 0;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.showAll {
+  margin-top: 12px;
+  font-family: var(--header-font);
+  font-size: 12px;
+  color: var(--link);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.showAll:hover { color: var(--link-hover); }

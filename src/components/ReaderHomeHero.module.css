@@ -1,0 +1,52 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0 0 40px 0;             /* Figma: 40px gap to intro paragraphs */
+}
+
+.imageLink {
+  line-height: 0;
+  margin-bottom: 16px;             /* Figma: gap-16 to wordmark */
+}
+
+.image {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.wordmark {
+  margin: 0 0 8px 0;               /* Figma: gap-8 to tagline */
+  font-size: 1.5rem;               /* 24px per Figma reader-Home wordmark */
+  line-height: 1.3;
+  color: var(--dark);
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.zh {
+  font-family: var(--body-font);
+  font-weight: 700;
+}
+
+.en {
+  font-family: var(--header-font);
+  font-weight: 600;
+}
+
+.sep {
+  color: var(--gray);
+  font-weight: 400;
+  margin: 0 0.35em;
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: 1rem;                 /* 16px per Figma */
+  line-height: var(--body-line-en, 1.65);
+  color: var(--gray);
+}

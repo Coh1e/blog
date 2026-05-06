@@ -1,0 +1,70 @@
+.row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  column-gap: 16px;
+  align-items: baseline;
+  padding: 4px 0;
+  margin: 0;
+  list-style: none;
+}
+
+.date {
+  font-family: var(--code-font);
+  font-size: var(--date-size);
+  color: var(--gray);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.title {
+  color: var(--link);
+  text-decoration: none;
+  font-family: var(--body-font);
+  font-size: var(--row-title-size);
+  line-height: 1.45;
+}
+
+.title:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.summary {
+  color: var(--gray);
+  font-size: var(--row-meta-size);
+  font-family: var(--header-font);
+  line-height: 1.5;
+}
+
+/* Reader mode: collapse to a single-line "→ title · date" link.
+ * Per Figma 209:410-414 — flat list, no summary, no date column. */
+:global(html.reader-mode) .row {
+  display: flex;
+  gap: 8px;
+  padding: 8px 0;
+  align-items: baseline;
+}
+:global(html.reader-mode) .body {
+  display: contents;
+}
+:global(html.reader-mode) .summary { display: none; }
+:global(html.reader-mode) .title {
+  font-family: var(--body-font);
+  font-size: 1.0625rem;          /* 17px */
+  line-height: 1.8;
+}
+:global(html.reader-mode) .title::before { content: "→ "; }
+:global(html.reader-mode) .date {
+  order: 2;
+  font-size: 1.0625rem;          /* match the title rhythm */
+  color: var(--gray);
+  font-family: var(--body-font);
+  width: auto;
+}
+:global(html.reader-mode) .date::before { content: "·  "; }

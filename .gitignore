@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.log
+.env*
+
+# Build / tooling temp dirs
+.vite-react-ssg-temp/
+.wrangler/
+.tmp-figma/
+
+# Per-machine Claude Code settings (user-specific, not project config)
+.claude/settings.local.json

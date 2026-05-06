@@ -1,0 +1,38 @@
+.toggle {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  font-family: var(--header-font);
+  font-size: 13px;
+}
+
+.active,
+.inactive {
+  text-decoration: none;
+  padding: 3px 9px;
+  border-radius: 2px;
+  line-height: 1.45;
+  border: 1px solid var(--lightgray);
+  transition: color 0.1s, border-color 0.1s;
+}
+
+.inactive {
+  color: var(--gray);
+}
+
+.inactive:hover {
+  color: var(--link);
+  border-color: var(--gray);
+}
+
+.active {
+  color: var(--dark);
+  border-color: var(--dark);
+  font-weight: 400;
+  cursor: default;
+}
+
+.sep {
+  color: var(--gray);
+  user-select: none;
+}

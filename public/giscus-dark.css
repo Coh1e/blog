@@ -1,0 +1,134 @@
+/*!
+ * Custom giscus theme — dark. Mirrors the site's flat dark palette:
+ *  - canvas:  #141414 (--bg dark)
+ *  - text:    #fafafa (--dark dark)
+ *  - link:    #7eb6ff (--link dark)
+ *  - border:  #2a2a2a (--lightgray dark)
+ *
+ * See giscus-light.css for the structure rationale.
+ */
+
+main {
+  /* canvas / surface */
+  --color-canvas-default: #141414;
+  --color-canvas-overlay: #141414;
+  --color-canvas-inset: #1c1c1c;
+  --color-canvas-subtle: #1c1c1c;
+
+  /* text */
+  --color-fg-default: #fafafa;
+  --color-fg-muted: #c8c8c8;
+  --color-fg-subtle: #666666;
+  --color-fg-on-emphasis: #141414;
+
+  /* borders */
+  --color-border-default: #2a2a2a;
+  --color-border-muted: #2a2a2a;
+
+  /* accent / links */
+  --color-accent-fg: #7eb6ff;
+  --color-accent-emphasis: #7eb6ff;
+  --color-accent-muted: rgba(126, 182, 255, 0.22);
+  --color-accent-subtle: rgba(126, 182, 255, 0.10);
+
+  /* primer button */
+  --color-btn-text: #fafafa;
+  --color-btn-bg: #1c1c1c;
+  --color-btn-border: #2a2a2a;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #2a2a2a;
+  --color-btn-hover-border: #666666;
+  --color-btn-active-bg: #2a2a2a;
+  --color-btn-active-border: #666666;
+  --color-btn-selected-bg: #2a2a2a;
+
+  /* primary button */
+  --color-btn-primary-text: #141414;
+  --color-btn-primary-bg: #7eb6ff;
+  --color-btn-primary-border: #7eb6ff;
+  --color-btn-primary-hover-bg: #a8cfff;
+  --color-btn-primary-hover-border: #a8cfff;
+  --color-btn-primary-disabled-text: #666666;
+  --color-btn-primary-disabled-bg: #1c1c1c;
+  --color-btn-primary-disabled-border: #2a2a2a;
+
+  --color-counter-border: transparent;
+
+  /* code highlights — GitHub dark-ish but tuned for #141414 canvas */
+  --color-prettylights-syntax-comment: #8b949e;
+  --color-prettylights-syntax-constant: #79c0ff;
+  --color-prettylights-syntax-entity: #d2a8ff;
+  --color-prettylights-syntax-storage-modifier-import: #fafafa;
+  --color-prettylights-syntax-entity-tag: #7ee787;
+  --color-prettylights-syntax-keyword: #ff7b72;
+  --color-prettylights-syntax-string: #a5d6ff;
+  --color-prettylights-syntax-variable: #ffa657;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #ee8888;
+  --color-prettylights-syntax-invalid-illegal-text: #f0f6fc;
+  --color-prettylights-syntax-invalid-illegal-bg: #8e1519;
+  --color-prettylights-syntax-carriage-return-text: #f0f6fc;
+  --color-prettylights-syntax-carriage-return-bg: #b62324;
+  --color-prettylights-syntax-string-regexp: #7ee787;
+  --color-prettylights-syntax-markup-list: #f2cc60;
+  --color-prettylights-syntax-markup-heading: #1f6feb;
+  --color-prettylights-syntax-markup-italic: #fafafa;
+  --color-prettylights-syntax-markup-bold: #fafafa;
+  --color-prettylights-syntax-markup-deleted-text: #ffdcd7;
+  --color-prettylights-syntax-markup-deleted-bg: #67060c;
+  --color-prettylights-syntax-markup-inserted-text: #aff5b4;
+  --color-prettylights-syntax-markup-inserted-bg: #033a16;
+  --color-prettylights-syntax-markup-changed-text: #ffdfb6;
+  --color-prettylights-syntax-markup-changed-bg: #5a1e02;
+  --color-prettylights-syntax-markup-ignored-text: #c9d1d9;
+  --color-prettylights-syntax-markup-ignored-bg: #1158c7;
+  --color-prettylights-syntax-meta-diff-range: #d2a8ff;
+  --color-prettylights-syntax-brackethighlighter-angle: #c8c8c8;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #666666;
+  --color-prettylights-syntax-constant-other-reference-link: #a5d6ff;
+
+  --color-danger-fg: #ee8888;
+  --color-success-fg: #7ee787;
+  --color-attention-fg: #f2cc60;
+  --color-attention-subtle: rgba(242, 204, 96, 0.08);
+  --color-severe-fg: #ee8888;
+  --color-neutral-muted: rgba(102, 102, 102, 0.4);
+  --color-neutral-subtle: rgba(102, 102, 102, 0.15);
+  --color-neutral-emphasis: #c8c8c8;
+  --color-neutral-emphasis-plus: #fafafa;
+  --color-primer-fg-disabled: #666666;
+  --color-primer-canvas-backdrop: rgba(0, 0, 0, 0.6);
+  --color-primer-shadow-highlight: 0 0 transparent;
+  --color-primer-shadow-inset: 0 0 transparent;
+
+  --primer-fontStack-sansSerif: "Inter", "Noto Sans SC", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --primer-fontStack-monospace: "JetBrains Mono", "LXGW WenKai Mono", monospace;
+}
+
+.markdown-body,
+.markdown-body p,
+.markdown-body li,
+.markdown-body blockquote {
+  font-family: "Source Serif 4", "Newsreader", "LXGW WenKai Screen", "LXGW WenKai",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif !important;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+
+.markdown-body code,
+.markdown-body pre {
+  font-family: "JetBrains Mono", "LXGW WenKai Mono", monospace !important;
+  font-size: 0.8125rem;
+}
+
+.gsc-comments,
+.gsc-main {
+  border: none;
+  background: transparent;
+}
+
+.gsc-reactions-popover,
+.gsc-reactions-menu {
+  border-radius: 0;
+}

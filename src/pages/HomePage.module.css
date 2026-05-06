@@ -1,0 +1,75 @@
+.intro {
+  font-size: var(--body-size);
+  color: var(--darkgray);
+  margin: 0 0 2.25rem 0;
+}
+
+.intro p {
+  margin: 0 0 0.75rem 0;          /* 12px gap between intro paragraphs per Figma */
+  line-height: var(--body-line);
+}
+
+.intro p:last-child {
+  margin-bottom: 0;
+}
+
+.section {
+  margin-bottom: 1.75rem;
+}
+
+.heading {
+  font-family: var(--header-font);
+  font-size: var(--label-size);
+  font-weight: 600;
+  letter-spacing: var(--label-tracking);
+  text-transform: uppercase;
+  color: var(--gray);
+  margin: 0 0 0.75rem 0;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.indexLink {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--darkgray);
+  line-height: 1.6;
+}
+
+.indexLink a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+.indexLink a:hover {
+  text-decoration: underline;
+}
+
+.indexCount {
+  color: var(--gray);
+  font-family: var(--header-font);
+  font-size: var(--row-meta-size);
+}
+
+.footer {
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lightgray);
+  font-size: var(--row-meta-size);
+  color: var(--gray);
+  font-family: var(--header-font);
+  line-height: 1.5;
+}
+
+.footerLink {
+  color: var(--gray);
+  text-decoration: none;
+}
+
+.footerLink:hover {
+  color: var(--link);
+}

@@ -1,0 +1,375 @@
+@import "./tokens.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { color-scheme: light; }
+html[data-theme="dark"] { color-scheme: dark; }
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--darkgray);
+  font-family: var(--body-font);
+  font-size: var(--body-size);
+  line-height: var(--body-line);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Per-language body leading. CSS variable cascade — anything reading
+ * `var(--body-line)` picks up the right value for the closest lang ancestor.
+ * Reader mode (html.reader-mode below) wins via higher specificity. */
+:lang(zh-CN), [lang^="zh"] {
+  letter-spacing: 0.01em;
+  --body-line: var(--body-line-cjk);
+}
+:lang(en), [lang="en"] {
+  --body-line: var(--body-line-en);
+}
+
+/* ── Reader mode ────────────────────────────────────────────────
+ * Toggled by ReaderToggle.tsx adding `.reader-mode` to <html>.
+ * Article-page focused: bigger type, more leading, hide rail + chrome.
+ * On non-article pages (home, list, archive, tags) reader mode is
+ * mostly a no-op (those layouts are already quiet).
+ */
+html.reader-mode {
+  --body-size: 1.125rem;          /* 17px → 18px (Figma reader spec) */
+  --body-line: 2.0;               /* 1.8 → 200% */
+  --body-line-cjk: 2.0;
+}
+
+/* Reader-mode H2 bumps from 1.3rem (~21px) to ~22px per Figma reader spec */
+html.reader-mode .body :global(h2),
+html.reader-mode article :global(h2) {
+  font-size: 1.375rem;
+}
+
+/* In reader mode the regular Toolbar is replaced by ReaderExitBar (rendered
+ * unconditionally in App.tsx, hidden via CSS until reader-mode is on). */
+html.reader-mode header[class*="_toolbar_"] { display: none; }
+
+/* Hide the right rail (TOC + Backlinks) — they're for skimming, not reading */
+html.reader-mode aside[class*="_rail_"] { display: none; }
+
+/* Home: hide the entire 240px sidebar (Wordmark, search, toggles, Avatar).
+ * The exit bar at the top covers wayfinding. */
+html.reader-mode aside[class*="_sidebar_"] { display: none; }
+html.reader-mode div[class*="HomeLayout_page_"],
+html.reader-mode div[class*="_page_"]:has(> aside[class*="_sidebar_"]) {
+  grid-template-columns: 1fr !important;
+  max-width: 680px;
+  margin: 0 auto;
+  padding-top: 40px !important;
+}
+
+/* Map: hide filter strip in reader mode. ArchiveRow handles its own row-level
+ * reader-mode adaptation in ArchiveRow.module.css. */
+html.reader-mode div[class*="_filterStrip_"] { display: none; }
+/* Map main column should also center to 680 in reader mode. */
+html.reader-mode main[class*="MapPage_main_"] {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Re-grid the article container to a single centered column.
+ * `:has()` targets ONLY ArticleLayout's wrapper (which contains <article>),
+ * not ListLayout / ArchiveRow / RecentEssayRow rows. */
+html.reader-mode div:has(> article[class*="_article_"]) {
+  grid-template-columns: 1fr !important;
+  max-width: 680px;               /* Figma reader spec: 680 (vs 720 normal) */
+  margin: 0 auto;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+html.reader-mode article[class*="_article_"] {
+  grid-column: 1 !important;
+  max-width: 100%;
+}
+
+/* Hide article-header chrome (breadcrumb, tag pills) */
+html.reader-mode p[class*="_breadcrumb_"],
+html.reader-mode p[class*="_tags_"] { display: none; }
+
+/* Hide post-body navigation: PrevNext, SeriesNav, Comments */
+html.reader-mode nav[class*="_nav_"][aria-label],
+html.reader-mode aside[class*="_nav_"][aria-label],
+html.reader-mode section[class*="_comments_"] { display: none; }
+
+/* Pressed-state for the ReaderToggle button so users see it's on */
+html.reader-mode button[aria-label="阅读"],
+html.reader-mode button[aria-label="Read"] {
+  background: var(--lightgray);
+  border-color: var(--gray);
+  color: var(--dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--header-font);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  color: var(--dark);
+  margin: 2rem 0 1rem 0;
+}
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.3rem; }
+h3 { font-size: var(--h3-size); }
+h4 { font-size: 1rem; }
+
+article p { margin: 1.1em 0; color: var(--darkgray); }
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover { color: var(--link-hover); }
+
+blockquote {
+  border-left: 2px solid var(--lightgray);
+  padding-left: 1rem;
+  margin-left: 0;
+  color: var(--gray);
+  font-style: normal;
+}
+
+code {
+  background: var(--code-bg);
+  padding: 0.1em 0.3em;
+  border-radius: 2px;
+  font-size: var(--inline-code-size);
+  font-family: var(--code-font);
+}
+pre {
+  border: 1px solid var(--lightgray);
+  border-radius: 2px;
+  padding: 14px 16px;
+  background: transparent;
+  overflow-x: auto;
+  font-size: var(--code-block-size);
+  line-height: 1.55;
+}
+pre > code { background: transparent; padding: 0; font-size: inherit; }
+
+table { border-collapse: collapse; font-size: 0.95em; margin: 1.2rem 0; }
+th, td {
+  border-bottom: 1px solid var(--lightgray);
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+}
+th { border-bottom-color: var(--darkgray); font-weight: 600; }
+
+ul, ol { padding-left: 1.5rem; }
+ul li, ol li { margin: 0.25rem 0; }
+
+article img, article svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.6rem auto 0.5rem auto;
+}
+
+/* ── Callouts (Obsidian flavour: > [!note], > [!tip], > [!warning]) ────
+ * Figma-aligned 3-color system. The site palette is greyscale + classic-blue
+ * only; warm accents are reserved for hover states. Other Obsidian aliases
+ * fold into one of the three:
+ *   muted  — note / info / abstract / quote
+ *   link   — tip / example / question
+ *   red    — warning / caution / important
+ */
+.callout {
+  border-left: 2px solid var(--callout-border, var(--gray));
+  padding: 2px 0 2px 16px;
+  margin: 1.4em 0;
+}
+.callout > .callout-title {
+  font-family: var(--header-font);
+  font-weight: 600;
+  font-size: 0.6875rem;            /* 11px per Figma */
+  text-transform: uppercase;
+  color: var(--callout-border, var(--gray));
+  margin: 0 0 0.25rem 0;
+  letter-spacing: 0.02em;
+}
+.callout > p { margin: 0.4em 0; }
+.callout > p:last-child { margin-bottom: 0; }
+
+.callout-note,
+.callout-info,
+.callout-abstract,
+.callout-quote     { --callout-border: var(--gray); }
+.callout-tip,
+.callout-example,
+.callout-question  { --callout-border: var(--link); }
+.callout-warning,
+.callout-caution,
+.callout-important { --callout-border: var(--link-hover); }
+
+/* ── GFM footnotes (auto-emitted by remark-gfm at end of body) ─── */
+.footnotes {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lightgray);
+  font-size: 0.8125rem;          /* 13px per Figma footnote text */
+  line-height: 1.6;
+  color: var(--gray);
+}
+/* Figma footnotes show only the rule + numbered list; no auto-emitted heading. */
+.footnotes h2 { display: none; }
+.footnotes ol { padding-left: 1.5rem; }
+.footnotes li { margin: 0.4rem 0; }
+.footnotes p { margin: 0; display: inline; }
+.data-footnote-backref { margin-left: 0.3em; text-decoration: none; }
+
+/* ── Figures (image + caption) ─────────────────────────────────── */
+.md-figure {
+  margin: 1.6rem 0;
+  text-align: center;
+}
+.md-figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.md-figure figcaption {
+  font-family: var(--body-font);
+  font-size: 0.8125rem;          /* 13px per Figma image caption spec */
+  line-height: 1.6;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+
+/* ── KaTeX math blocks: ensure block math doesn't overflow ─────── */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* ── Custom unordered-list bullet (·) per Figma markdown sample ─── */
+ul:not(.contains-task-list) li::marker {
+  content: "·  ";
+  color: var(--gray);
+}
+
+/* ── GFM task lists ── */
+.contains-task-list { padding-left: 0; list-style: none; }
+.task-list-item {
+  list-style: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 4px;
+}
+.task-list-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--dark);
+  border-radius: 2px;
+  background: transparent;
+  margin: 0;
+  flex-shrink: 0;
+  position: relative;
+  top: 0.4em;
+}
+.task-list-item input[type="checkbox"]:checked {
+  background: var(--dark);
+}
+.task-list-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--bg);
+  font-family: var(--header-font);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1;
+}
+.task-list-item:has(input:checked) {
+  text-decoration: line-through;
+  color: var(--gray);
+}
+
+/* ── Keyboard keys (<kbd>) ── */
+kbd {
+  font-family: var(--code-font);
+  font-size: 0.8125rem;            /* 13px per Figma */
+  padding: 0 6px;
+  border: 1px solid var(--lightgray);
+  border-radius: 3px;
+  color: var(--dark);
+  white-space: nowrap;
+}
+
+/* ── Highlight (<mark>) ── */
+mark {
+  background: var(--mark-bg);
+  color: var(--dark);
+  padding: 0 4px;
+}
+
+/* ── Definition list (<dl>/<dt>/<dd>) ── */
+dl { margin: 1.2em 0; }
+dt {
+  font-family: var(--body-font);
+  font-weight: 700;
+  color: var(--dark);
+  margin-top: 0.75em;
+}
+dt:first-child { margin-top: 0; }
+dd {
+  margin-left: 24px;             /* per Figma definition list pl-24 */
+  color: var(--darkgray);
+}
+
+/* ── Heading anchor links (rendered by MdH2 / MdH3 in markdown.tsx) ── */
+.heading-anchor {
+  margin-left: 0.4em;
+  font-family: var(--header-font);
+  font-weight: 400;
+  color: var(--gray);
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+h2:hover > .heading-anchor,
+h3:hover > .heading-anchor { opacity: 0.5; }
+h2 > .heading-anchor:hover,
+h3 > .heading-anchor:hover { opacity: 1; }
+
+/* ── Sidenotes (Tufte-style margin notes, optional) ─────────────
+ * Author with raw HTML inside markdown body (rehype-raw handles it):
+ *   Some text<aside class="sidenote">a quiet aside</aside> resumes here.
+ * On wide viewports the sidenote floats into the right margin; below
+ * the article-column breakpoint it falls back to inline italic. */
+.sidenote {
+  font-family: var(--header-font);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--gray);
+}
+@media (min-width: 1100px) {
+  .sidenote {
+    float: right;
+    clear: right;
+    width: var(--right-rail-width);
+    margin: 0.2rem -220px 1rem 1rem;
+    border-left: 1px solid var(--lightgray);
+    padding-left: 0.75rem;
+  }
+}
+@media (max-width: 1099px) {
+  .sidenote {
+    display: block;
+    margin: 0.5rem 0;
+    padding: 0.4rem 0.75rem;
+    border-left: 2px solid var(--lightgray);
+    font-style: italic;
+  }
+}

@@ -1,0 +1,80 @@
+/* ── Color + font tokens — match Figma (file FIGMA_FILE_ID) ── */
+
+:root {
+  /* Color palette (light mode)
+     Single-layer background per Figma `Garden.color/bg` — there is no
+     darker canvas behind the content. --canvas is kept as an alias of
+     --bg so existing references keep working without a global rename. */
+  --canvas:     #fafafa;
+  --bg:         #fafafa;
+  --code-bg:    #f1f1f1;
+  --lightgray:  #e5e5e5;
+  --gray:       #b8b8b8;
+  --darkgray:   #4a4a4a;
+  --dark:       #0f0f0f;
+  --link:       #0645ad;
+  --link-hover: #8b1a1a;
+
+  /* Yellow highlight (mark element). Figma keeps this raw — single allowed
+     non-token fill on a content surface. */
+  --mark-bg:    #fff7d6;
+
+  /* Font stacks
+     Body Latin: Source Serif 4 (per Figma EN body).
+     Body CJK:   LXGW WenKai Screen (per-glyph fallback handles mixed scripts).
+     Newsreader retained as fallback + for math italic blocks. */
+  --body-font:
+    "Source Serif 4", "Newsreader",
+    "LXGW WenKai Screen", "LXGW WenKai",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+  --header-font:
+    "Inter", "Noto Sans SC", "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
+  --code-font:
+    "JetBrains Mono", "LXGW WenKai Mono", monospace;
+  --emoji-font:
+    "Twemoji Mozilla", "Apple Color Emoji",
+    "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+
+  /* Type scale (matches Figma exact pixel sizes) */
+  --body-size: 1.0625rem;     /* 17px — Home / list intro paragraphs */
+  --article-body-size: 1rem;  /* 16px — Article body + Markdown sample */
+  --body-line: 1.8;           /* CN body line-height (default; EN gets 1.65 via :lang(en)) */
+  --body-line-cjk: 1.8;
+  --body-line-en: 1.65;       /* Per Figma EN article body */
+  --label-size: 0.75rem;      /* 12px — section labels (最近的文章, MAP, 目录) */
+  --label-tracking: 0.06em;   /* tracking-[0.72px] at 12px */
+  --row-title-size: 1rem;     /* 16px — entry title in rows + sidebar */
+  --row-meta-size: 0.75rem;   /* 12px — summary, status, footnote text */
+  --date-size: 0.875rem;      /* 14px — JetBrains Mono dates */
+  --inline-code-size: 0.875rem; /* 14px — Figma Markdown sample inline code */
+  --code-block-size: 0.8125rem; /* 13px — Figma code block body */
+  --h3-size: 1.125rem;        /* 18px — Figma article H3 */
+
+  /* Layout dimensions (match Figma) */
+  --article-width: 720px;
+  --right-rail-width: 180px;
+  --sidebar-width: 240px;
+  --article-indent: 140px;     /* non-homepage left margin */
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+}
+
+:root[data-theme="dark"] {
+  --canvas:     #141414;
+  --bg:         #141414;
+  --code-bg:    #1c1c1c;
+  --lightgray:  #2a2a2a;
+  --gray:       #666666;
+  --darkgray:   #c8c8c8;
+  --dark:       #fafafa;
+  --link:       #7eb6ff;
+  --link-hover: #ee8888;
+  --mark-bg:    #3a3120;     /* dark equivalent for highlight (per Figma TODO note) */
+}
