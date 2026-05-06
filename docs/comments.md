@@ -1,6 +1,8 @@
 # Comments (Giscus)
 
-The site renders a comments section under each article via [Giscus](https://giscus.app), which mounts an iframe backed by a GitHub Discussions thread. No backend, no email collection. Disabled by default — fill in the config to turn on.
+The site renders a comments section under each article via [Giscus](https://giscus.app), which mounts an iframe backed by a GitHub Discussions thread. No backend, no email collection.
+
+**Currently live**: backed by Discussions on **[Coh1e/blog](https://github.com/Coh1e/blog/discussions)**, category **Announcements**, mapping by `pathname`. Visual style is `custom` — loads `https://blog.coh1e.com/giscus-light.css` / `giscus-dark.css` so the iframe matches Article Column typography and tokens. Config lives in `src/lib/site-config.ts:14-47`; `isGiscusEnabled()` short-circuits the component if any of `repo` / `repoId` / `categoryId` is empty.
 
 ## How it works
 

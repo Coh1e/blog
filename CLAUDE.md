@@ -16,6 +16,8 @@ npm run dev          # local dev with HMR (vite)
 npm run build        # vite-react-ssg → dist/, then SEO files (sitemap/robots/RSS), then Pagefind index
 npm run preview      # serve dist/ to check the actual built output
 npm run typecheck    # tsc --noEmit
+npm run cf:login     # one-time wrangler OAuth (browser); cf:whoami checks auth state
+npm run deploy       # build + wrangler pages deploy dist  →  Cloudflare Pages project "unauthorized"  →  https://blog.coh1e.com
 ```
 
 `npm run build` is three steps: `vite-react-ssg build` (static export) → `node scripts/generate-seo-files.mjs` → `pagefind --site dist`. Search (Pagefind) only works against `dist/` after a full build; it does not run in dev.
